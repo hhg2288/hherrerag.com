@@ -1,19 +1,31 @@
-body{
-  font-family: "Helvetica";
-  text-align: center;
-  padding: 50px 20px 0;
-  background: #f4f4f7;
-  color: #444;
-  margin: 0;
-}
+/*
+-------------------
+BASE SASS FILE
+author: Horacio Herrera
+-------------------
+*/
 
-h1{
-  font-size: 65px;
-  line-height: 1.2em;
-  border-bottom: #CCC solid 1px;
-  padding: 20px 0;
-}
+@import "../components/bourbon/dist/bourbon";
 
-h3{
-  font-weight: 300;
+@import "base/font";
+@import "base/genericons";
+@import "base/_mixins";
+
+@import "base/_variables";
+@import "base/_base";
+
+@import "components/header";
+@import "components/sections";
+
+@import "_shame.scss";
+
+html,body {
+	width: 100%;
+	min-height: 100%;
+	margin: 0;
+	padding: 0;
+	@include position(absolute, 0 0 0 0);
+	overflow-x: hidden;
+	overflow-y: scroll;
+	font-size: 16px;
 }

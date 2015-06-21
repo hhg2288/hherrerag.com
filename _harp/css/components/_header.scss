@@ -1,0 +1,105 @@
+.header
+{
+	@include size(100% 100%);
+	background: transparent url("../assets/bg.png") center center no-repeat;
+	background-size: cover;
+
+	.bg
+	{
+		background: rgba(0,0,0,0.8);
+		display: table;
+		@include size(100% 100%);
+	}
+
+	.content
+	{
+		text-align: center;
+		display: table-cell;
+		vertical-align: middle;
+
+		.bottom-box,
+		.medium-box
+		{
+			overflow: hidden;
+		}
+
+		.medium-box { padding: 48px 0 32px; }
+	}
+
+	.line
+	{
+		width: 70%;
+		max-width: 648px;
+	}
+
+	.title,
+	.subtitle
+	{
+		font-family: 'Open Sans', sans-serif;
+		color: white;
+		margin: 0;
+		padding: 0;
+	}
+
+	.subtitle
+	{
+		margin: 0 0 .5em;
+
+		color: rgba(255,255,255,0.6);
+		position: relative;
+
+		> span
+		{
+			@include position(absolute, 0 0 0 0);
+			@include transform(translate(0px,50px));
+			opacity: 0;
+			@include transition(all .5s ease);
+
+			&.active { opacity: 1; @include transform(translate(0px,0px));}
+		}
+
+		.size span { opacity: 0; visibility: hidden; }
+	}
+
+	.bottom-box
+	{
+		ul
+		{
+			width: 100%;
+			padding: 22px 16px 16px 16px;
+			text-align: center;
+			box-sizing: border-box;
+		}
+
+		li
+		{
+			margin: 16px 32px;
+			display: inline-block;
+			width: auto;
+		}
+	}
+
+	.social-icon
+	{
+		color: white;
+		text-decoration: none;
+
+		span
+		{
+			font-size: 24px;
+			line-height: 24px;
+		}
+	}
+}
+
+@media (min-width: 480px) {
+
+	.header { font-size: 32px; }
+
+}
+
+@media (min-width: 768px) {
+
+	.header { font-size: 40px; }
+
+}
