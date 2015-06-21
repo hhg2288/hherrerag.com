@@ -1,0 +1,91 @@
+<!DOCTYPE html><html><head><title>Horacio Herrera | UI Designer</title><meta charset="utf-8" content="text/html" http-equiv="content-type"><meta content="ie=edge,chrome=1" http-equiv="x-ua-compatible"><meta content="Horacio Herrera - UI Designer website" name="description"><meta content="Horacio Herrera" name="author"><meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1" name="viewport"><meta content="horacio, herrera, digital designer, media, digital, design, video, web, motion, graphic, responsive, animation, animacion, sonar, voice constructor, ied barcelona, loop, offf, freelance, javascript, interactive, applications, ui" name="keywords"><meta content="Ccwu2c0nl4-IJDOLiOzdAmaKPSKyWFqtH6tyn1jDPeg" name="google-site-verification"><style>#overlay{position:absolute;top:0;right:0;bottom:0;left:0;background:black;z-index:1000;-webkit-transition:all 0.5s ease;-moz-transition:all 0.5s ease;transition:all 0.5s ease}#overlay.loaded{opacity:0}#overlay .logo{position:absolute;top:50%;right:0;bottom:0;left:50%;-webkit-transform:translate(-50%, -50%);-moz-transform:translate(-50%, -50%);-ms-transform:translate(-50%, -50%);-o-transform:translate(-50%, -50%);transform:translate(-50%, -50%);-webkit-transition:all 0.5s ease;-moz-transition:all 0.5s ease;transition:all 0.5s ease;-webkit-animation:pulse 2s ease-in infinite;-moz-animation:pulse 2s ease-in infinite;animation:pulse 2s ease-in infinite}#overlay .logo rect,#overlay .logo polygon{fill:rgba(255,255,255,0.3)}.line{max-width:648px;}
+</style><link rel="stylesheet" href="/css/main.css"></head><body><h1>retina.js <a href="http://travis-ci.org/imulus/retinajs"><img src="https://secure.travis-ci.org/imulus/retinajs.png?branch=master" alt="Build Status"></a></h1><h3>JavaScript, LESS and SASS helpers for rendering high-resolution image variants</h3><p>retina.js makes it easy to serve high-resolution images to devices with retina displays</p>
+<p><a href="http://travis-ci.org/imulus/retinajs"><img src="https://secure.travis-ci.org/imulus/retinajs.png?branch=master" alt="Build Status"></a></p>
+<h2>How it works</h2><p>When your users load a page, retina.js checks each image on the page to see if there is a high-resolution version of that image on your server. If a high-resolution variant exists, the script will swap in that image in-place.</p>
+<p>The script assumes you use Apple&#39;s prescribed high-resolution modifier (@2x) to denote high-resolution image variants on your server. It is also possible to override this by manually specifying the URL for the @2x images using <code>data-at2x</code> attributes.</p>
+<p>For example, if you have an image on your page that looks like this:</p>
+<pre><code class="language-html">&lt;img src=&quot;/images/my_image.png&quot; /&gt;
+</code></pre>
+<p>The script will check your server to see if an alternative image exists at <code>/images/my_image@2x.png</code></p>
+<p>However, if you have:</p>
+<pre><code class="language-html">&lt;img src=&quot;/images/my_image.png&quot; data-at2x=&quot;http://example.com/my_image@2x.png&quot; /&gt;
+</code></pre>
+<p>The script will use <code>http://example.com/my_image@2x.png</code> as the high-resolution image. No checks to the server will be performed.</p>
+<h2>How to use</h2><h3>JavaScript</h3><p>The JavaScript helper script automatically replaces images on your page with high-resolution variants (if they exist). To use it, download the script and include it at the bottom of your page.</p>
+<ol>
+<li>Place the retina.js file on your server</li>
+<li>Include the script on your page (put it at the bottom of your template, before your closing \ tag)</li>
+</ol>
+<pre><code class="language-html">&lt;script type=&quot;text/javascript&quot; src=&quot;/scripts/retina.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>You can also exlude an image, which has no high-res version. Simple add <code>data-no-retina</code>.</p>
+<pre><code class="language-html">&lt;img src=&quot;/path/to/image&quot; data-no-retina /&gt;
+</code></pre>
+<h3>LESS &amp; SASS</h3><p>The LESS &amp; SASS CSS mixins are helpers for applying high-resolution background images in your stylesheet. You provide it with an image path and the dimensions of the original-resolution image. The mixin creates a media query specifically for Retina displays, changes the background image for the selector elements to use the high-resolution (@2x) variant and applies a background-size of the original image in order to maintain proper dimensions. To use it, download the mixin, import or include it in your LESS or SASS stylesheet, and apply it to elements of your choice. The SASS versions require you pass the extension separately from the path.</p>
+<p><em>Syntax:</em></p>
+<pre><code class="language-less">.at2x(@path, [optional] @width: auto, [optional] @height: auto);
+</code></pre>
+<pre><code class="language-scss">@include at2x($path, [option] $ext: &quot;jpg&quot;, [optional] $width: auto, [optional] $height: auto);
+</code></pre>
+<p><em>Steps:</em></p>
+<ol>
+<li>LESS - Add the .at2x() mixin from retina.less to your LESS stylesheet (or reference it in an @import statement)
+SASS - Add the @mixin at2x() from retina.scss or retina.sass to your SASS stylesheet (or reference it in an @import)</li>
+<li>LESS - In your stylesheet, call the .at2x() mixin anywhere instead of using background-image
+SASS - In your stylesheet, call @include at2x() anywhere instead of using background-image</li>
+</ol>
+<p>This:</p>
+<pre><code class="language-less">.logo {
+  .at2x(&#39;/images/my_image.png&#39;, 200px, 100px);
+}
+</code></pre>
+<pre><code class="language-sass">.logo {
+  @include at2x(&#39;/images/my_image&#39;, png, 200px, 100px);
+}
+</code></pre>
+<p>Will compile to:</p>
+<pre><code class="language-css">.logo {
+  background-image: url(&#39;/images/my_image.png&#39;);
+}
+
+@media all and (-webkit-min-device-pixel-ratio: 1.5) {
+  .logo {
+    background-image: url(&#39;/images/my_image@2x.png&#39;);
+    background-size: 200px 100px;
+  }
+}
+</code></pre>
+<h3>Ruby on Rails 3.x</h3><p>...or any framework that embeds some digest/hash to the asset URLs based on the contents, e.g. <code>/images/image-{hash1}.jpg</code>.</p>
+<p>The problem with this is that the high-resolution version would have a different hash, and would not conform the usual pattern, i.e. <code>/images/image@2x-{hash2}.jpg</code>. So automatic detection would fail because retina.js would check the existence of <code>/images/image-{hash1}@2x.jpg</code>.</p>
+<p>There&#39;s no way for retina.js to know beforehand what the high-resolution image&#39;s hash would be without some sort of help from the server side. So in this case, the suggested method is to supply the high-resolution URLs using the <code>data-at2x</code> attributes as previously described in the How It Works section.</p>
+<p>In Rails, one way to automate this is using a helper, e.g.:</p>
+<pre><code class="language-ruby"># in app/helpers/some_helper.rb or app/helpers/application_helper.rb
+def image_tag_with_at2x(name_at_1x, options={})
+  name_at_2x = name_at_1x.gsub(%r{\.\w+$}, &#39;@2x\0&#39;)
+  image_tag(name_at_1x, options.merge(&quot;data-at2x&quot; =&gt; asset_path(name_at_2x)))
+end
+</code></pre>
+<p>And then in your views (templates), instead of using image_tag, you would use image_tag_with_at2x, e.g. for ERB:</p>
+<pre><code class="language-erb">&lt;%= image_tag_with_at2x &quot;logo.png&quot; %&gt;
+</code></pre>
+<p>It would generate something like:</p>
+<pre><code class="language-html">&lt;img src=&quot;logo-{hash1}.png&quot; data-at2x=&quot;logo@2x-{hash2}.png&quot; /&gt;
+</code></pre>
+<h2>How to test</h2><p>We use <a href="http://visionmedia.github.com/mocha/">mocha</a> for unit testing with <a href="https://github.com/visionmedia/should.js">should</a> assertions. Install mocha and should by running <code>npm install</code>.</p>
+<p>To run the test suite:</p>
+<pre><code class="language-bash">$ npm test
+</code></pre>
+<p>Use <a href="https://github.com/nodeapps/http-server">http-server</a> for node.js to test it. To install, run <code>npm install -g http-server</code>.</p>
+<p>If you&#39;ve updated <code>retina.js</code> be sure to copy it from <code>src/retina.js</code> to <code>test/functional/public/retina.js</code>.</p>
+<p>To start the server, run:</p>
+<pre><code class="language-bash">$ cd test/functional &amp;&amp; http-server
+</code></pre>
+<p>Then navigate your browser to <a href="http://localhost:8080">http://localhost:8080</a></p>
+<p>After that, open up <code>test/functional/public/index.html</code> in your editor, and try commenting out the line that spoofs retina support, and reloading it.</p><script src="/js/app.min.js"></script><script src="/js/main.js"></script><script>var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-12285447-3']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();</script></body></html>

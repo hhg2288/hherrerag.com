@@ -1,0 +1,60 @@
+<!DOCTYPE html><html><head><title>Horacio Herrera | UI Designer</title><meta charset="utf-8" content="text/html" http-equiv="content-type"><meta content="ie=edge,chrome=1" http-equiv="x-ua-compatible"><meta content="Horacio Herrera - UI Designer website" name="description"><meta content="Horacio Herrera" name="author"><meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1" name="viewport"><meta content="horacio, herrera, digital designer, media, digital, design, video, web, motion, graphic, responsive, animation, animacion, sonar, voice constructor, ied barcelona, loop, offf, freelance, javascript, interactive, applications, ui" name="keywords"><meta content="Ccwu2c0nl4-IJDOLiOzdAmaKPSKyWFqtH6tyn1jDPeg" name="google-site-verification"><style>#overlay{position:absolute;top:0;right:0;bottom:0;left:0;background:black;z-index:1000;-webkit-transition:all 0.5s ease;-moz-transition:all 0.5s ease;transition:all 0.5s ease}#overlay.loaded{opacity:0}#overlay .logo{position:absolute;top:50%;right:0;bottom:0;left:50%;-webkit-transform:translate(-50%, -50%);-moz-transform:translate(-50%, -50%);-ms-transform:translate(-50%, -50%);-o-transform:translate(-50%, -50%);transform:translate(-50%, -50%);-webkit-transition:all 0.5s ease;-moz-transition:all 0.5s ease;transition:all 0.5s ease;-webkit-animation:pulse 2s ease-in infinite;-moz-animation:pulse 2s ease-in infinite;animation:pulse 2s ease-in infinite}#overlay .logo rect,#overlay .logo polygon{fill:rgba(255,255,255,0.3)}.line{max-width:648px;}
+</style><link rel="stylesheet" href="/css/main.css"></head><body><h2>About</h2><p>Wodry.js is a simple jQuery plugin for a text flipping/rotating written in CoffeeScript. It was inspired by the Adjector.js. Wodry.js does the same things but it has new features that allow you to set animation from animations collection, set your own callback on content flipping, etc.</p>
+<h2>How to get it</h2><p>You can download this repository or install it from Bower:</p>
+<pre><code class="language-bash">bower install wodry
+</code></pre>
+<h2>How it works</h2><p>In the first place you need to include wodry.css and wodry.js (wodry.min.js) files then create html tag with content that will flip/rotate (like this):</p>
+<pre><code class="language-html">
+&lt;div&gt;
+    Bla bla bla &lt;span class=&quot;wodry&quot;&gt;word1|word2|word3&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+<p>And in the script tag add this:</p>
+<pre><code class="language-javascript">$(&#39;.wodry&#39;).wodry();
+</code></pre>
+<p>In this case it will works with default settings. But if you want you can specify settings of wodry.js:</p>
+<pre><code class="language-javascript">$(&#39;.wodry&#39;).wodry({
+    //settings
+});
+</code></pre>
+<p>Settings object has the following fields:</p>
+<ul>
+<li><strong>separator</strong>: sets a custom separator between flipped text. <strong>Default value:</strong> &#39;|&quot;;</li>
+<li><strong>delay</strong>: sets a delay of interations. <strong>Default value:</strong> 2000;</li>
+<li><strong>animationDuration</strong>: sets duration of animation. <strong>Default value:</strong> 500;</li>
+<li><strong>animation</strong>: sets a type of animation. <strong>Default value:</strong> &#39;rotateY&#39;;</li>
+<li><strong>callback</strong>: sets a callback that calls on each iteration. <strong>Default value:</strong> an empty function;</li>
+<li><strong>shift</strong>: specify the X,Y and Z values of shifting. <strong>Default value:</strong> {x:0,y:0,z:0};</li>
+</ul>
+<p>List of animations:</p>
+<ul>
+<li>rotateX;</li>
+<li>rotateY;</li>
+<li>rotateAll;</li>
+<li>scaleX;</li>
+<li>scaleY;</li>
+<li>scaleAll;</li>
+<li>clockwise;</li>
+<li>anticlockwise;</li>
+</ul>
+<h2><a href="http://daynin.github.io/wodry/#examples">Examples here</a></h2><h2>Development</h2><h3>Prerequirements</h3><ul>
+<li><a href="http://nodejs.org/">node.js</a></li>
+<li>grunt</li>
+</ul>
+<pre><code class="language-bash">    npm install -g grunt-cli
+</code></pre>
+<p>When node.js and grunt will be installed you need to run &#39;npm install&#39; command in a root folder of the project for installation of all dependencies.</p>
+<p>For autocompiling .coffeescript to .js run grunt with &#39;dev&#39; parameter in a root folder of the project:</p>
+<pre><code class="language-bash">    grunt dev
+</code></pre>
+<p>For project building run:</p>
+<pre><code class="language-bash">    grunt
+</code></pre>
+<h3>Contributions &amp; Issues</h3><p>All your issues and pull requests are welcome!</p><script src="/js/app.min.js"></script><script src="/js/main.js"></script><script>var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-12285447-3']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();</script></body></html>
