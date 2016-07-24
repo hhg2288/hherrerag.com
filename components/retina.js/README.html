@@ -21,7 +21,8 @@
 <p>You can also exlude an image, which has no high-res version. Simple add <code>data-no-retina</code>.</p>
 <pre><code class="language-html">&lt;img src=&quot;/path/to/image&quot; data-no-retina /&gt;
 </code></pre>
-<h3>LESS &amp; SASS</h3><p>The LESS &amp; SASS CSS mixins are helpers for applying high-resolution background images in your stylesheet. You provide it with an image path and the dimensions of the original-resolution image. The mixin creates a media query specifically for Retina displays, changes the background image for the selector elements to use the high-resolution (@2x) variant and applies a background-size of the original image in order to maintain proper dimensions. To use it, download the mixin, import or include it in your LESS or SASS stylesheet, and apply it to elements of your choice. The SASS versions require you pass the extension separately from the path.</p>
+<p>###LESS &amp; SASS</p>
+<p>The LESS &amp; SASS CSS mixins are helpers for applying high-resolution background images in your stylesheet. You provide it with an image path and the dimensions of the original-resolution image. The mixin creates a media query specifically for Retina displays, changes the background image for the selector elements to use the high-resolution (@2x) variant and applies a background-size of the original image in order to maintain proper dimensions. To use it, download the mixin, import or include it in your LESS or SASS stylesheet, and apply it to elements of your choice. The SASS versions require you pass the extension separately from the path.</p>
 <p><em>Syntax:</em></p>
 <pre><code class="language-less">.at2x(@path, [optional] @width: auto, [optional] @height: auto);
 </code></pre>
